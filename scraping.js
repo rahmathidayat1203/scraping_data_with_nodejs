@@ -23,10 +23,10 @@ const getPostTitles = async () => {
             ]
 
             const res = await Promise.any(req)
-             const c = cheerio.load(res.data)
-                const ar = c("#post")
+             const $ = cheerio.load(res.data)
+                const ar = $("#post")
                 ar.each(function() {
-                    title = c(this).find("h1").text()
+                    title = $(this).find("h1").text()
                     describe = $(this).find("div").find("p").text().replace(/\s+/g," ").trim()
                     dataList.push({title,describe})
                 })
